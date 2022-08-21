@@ -1,19 +1,19 @@
-import {View, StyleSheet, TouchableOpacity, Image} from "react-native";
-import {COLORS, SHADOWS, SIZES} from "../constants";
+import {Image, StyleSheet, Text, TouchableOpacity} from "react-native";
+import {COLORS, FONTS, SHADOWS, SIZES} from "../constants";
 
 export function CircleButton({imgUrl, handlerPress, ...props}) {
-    return(
+    return (
         <TouchableOpacity style={[styles.circleContainer, {...props}]} onPress={handlerPress}>
-            <Image source={imgUrl} style={styles.circleImage} resizeMode='contain' />
+            <Image source={imgUrl} style={styles.circleImage} resizeMode='contain'/>
         </TouchableOpacity>
     )
 }
 
-export function RectButton(props) {
-    return(
-        <View>
-
-        </View>
+export function RectButton({minWidth, fontSize, handlePress, ...props}) {
+    return (
+        <TouchableOpacity style={[styles.rectContainer, {minWidth: minWidth, ...props}]}>
+            <Text style={[styles.rectText, {fontSize: fontSize}]}>Place a bid</Text>
+        </TouchableOpacity>
     )
 }
 
@@ -31,5 +31,16 @@ const styles = StyleSheet.create({
     circleImage: {
         width: 24,
         height: 24,
-    }
+    },
+    rectContainer: {
+        backgroundColor: COLORS.primary,
+        borderRadius: SIZES.extraLarge,
+        padding: SIZES.small,
+        ...SHADOWS.light
+    },
+    rectText: {
+        fontFamily: FONTS.semiBold,
+        color: COLORS.white,
+        textAlign: "center"
+    },
 })

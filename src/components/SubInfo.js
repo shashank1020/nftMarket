@@ -1,18 +1,20 @@
 import {Image, StyleSheet, Text, View} from "react-native";
 import {assets, COLORS, FONTS, SHADOWS, SIZES} from "../constants";
 
-export function NTFTitle() {
+export function NFTTitle({title='NTF title', subtitle='NTF subtitle'}) {
     return (
         <View>
-            <Text>NTFTitle</Text>
+            <Text style={styles.NFTTitle}>{title}</Text>
+            <Text style={styles.NFTSubtitle}>{subtitle}</Text>
         </View>
     )
 }
 
-export function ETHPrice() {
+export function ETHPrice({price}) {
     return (
-        <View>
-            <Text>ETHPrice</Text>
+        <View style={styles.ETHPrice}>
+            <Image source={assets.eth} resizeMode='contain' style={styles.ETHImage}/>
+            <Text style={styles.ETHText}>{price}</Text>
         </View>
     )
 }
@@ -30,6 +32,7 @@ export function ImageCmp({imgUrl, index}) {
 export function People() {
     return (
         <View style={styles.people}>
+            {/* fake data */}
             {[assets.person02, assets.person03, assets.person04]
                 .map((imgUrl, index) => <ImageCmp imgUrl={imgUrl} index={index} key={`people-${index}`}/>)}
         </View>
@@ -39,8 +42,8 @@ export function People() {
 export function EndDate() {
     return (
         <View style={styles.endDate}>
-            <Text style={styles.endDateText1}>EndDate</Text>
-            <Text style={styles.endDateText2}>12h 30m</Text>
+            <Text style={styles.endDateCaption}>EndDate</Text>
+            <Text style={styles.endDateText}>1h 30m</Text>
         </View>
     )
 }
@@ -62,9 +65,11 @@ const styles = StyleSheet.create({
         marginTop: -SIZES.extraLarge,
         flexDirection: "row",
         justifyContent: "space-between"
-    }, people: {
+    },
+    people: {
         flexDirection: 'row'
-    }, image: {
+    },
+    image: {
         width: 48, height: 48
     },
     endDate: {
@@ -77,14 +82,38 @@ const styles = StyleSheet.create({
         elevation: 1,
         maxWidth: "50%",
     },
-    endDateText1: {
+    endDateCaption: {
         fontFamily: FONTS.regular,
         fontSize: SIZES.small,
         color: COLORS.primary
     },
-    endDateText2: {
+    endDateText: {
         fontFamily: FONTS.semiBold,
         fontSize: SIZES.medium,
         color: COLORS.primary
+    },
+    NFTTitle: {
+        fontFamily: FONTS.semiBold,
+        fontSize: SIZES.large,
+        color: COLORS.primary
+    },
+    NFTSubtitle: {
+        fontFamily: FONTS.regular,
+        fontSize: SIZES.small,
+        color: COLORS.primary
+    },
+    ETHPrice: {
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    ETHText: {
+        fontFamily: FONTS.medium,
+        fontSize: SIZES.font,
+        color: COLORS.primary,
+    },
+    ETHImage: {
+        width: 20,
+        height: 20,
+        marginRight: 2
     }
 })

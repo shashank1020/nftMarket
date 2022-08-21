@@ -1,19 +1,28 @@
-import {Text, View, StyleSheet, Image} from "react-native";
+import {Image, StyleSheet, View} from "react-native";
 import {useNavigation} from "@react-navigation/native";
 import {assets, COLORS, SHADOWS, SIZES} from "../constants";
-import {CircleButton} from "./buttons";
-import {SubInfo} from "./SubInfo";
+import {CircleButton, RectButton} from "./buttons";
+import {ETHPrice, NFTTitle, SubInfo} from "./SubInfo";
 
 function NFTCard({data}) {
-    const navigation = useNavigation()
-    return(
+    const {navigate} = useNavigation()
+    return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
                 <Image source={data.image} style={styles.image}/>
             </View>
-            <CircleButton imgUrl={assets.heart} right={10} top={10} />
-            <SubInfo />
-            <View style={styles.nftTitle}></View>
+            <CircleButton imgUrl={assets.heart} right={10} top={10}/>
+            <SubInfo/>
+            <View style={styles.nftTitle}>
+                <NFTTitle
+                    title={data.name}
+                    subtitle={data.creator}
+                />
+                <View style={styles.bottomContainer}>
+                    <ETHPrice price={data.price}/>
+                    <RectButton minWidth={120} fontSize={SIZES.font} handlePress={() => navigate('Details', {data})}/>
+                </View>
+            </View>
         </View>
     )
 }
@@ -27,7 +36,6 @@ const styles = StyleSheet.create({
         marginBottom: SIZES.extraLarge,
         margin: SIZES.base,
         ...SHADOWS.dark,
-
     },
     imageContainer: {
         height: 250,
@@ -43,4 +51,11 @@ const styles = StyleSheet.create({
         width: '100%',
         padding: SIZES.font
     },
+    bottomContainer: {
+        marginTop: SIZES.font,
+        flexDirection: "row",
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    }
+
 })

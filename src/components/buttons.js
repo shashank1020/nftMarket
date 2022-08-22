@@ -11,7 +11,7 @@ export function CircleButton({imgUrl, handlerPress, ...props}) {
 
 export function RectButton({minWidth, fontSize, handlePress, ...props}) {
     return (
-        <TouchableOpacity style={[styles.rectContainer, {minWidth: minWidth, ...props}]}>
+        <TouchableOpacity style={[styles.rectContainer, {minWidth: minWidth, ...props}]} onPress={handlePress}>
             <Text style={[styles.rectText, {fontSize: fontSize}]}>Place a bid</Text>
         </TouchableOpacity>
     )

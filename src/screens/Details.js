@@ -1,6 +1,6 @@
 import {Text, View} from "react-native";
 
-function Detail() {
+function Details() {
     return(
         <View>
             <Text>Detail page</Text>
@@ -8,4 +8,4 @@ function Detail() {
     )
 }
 
-export default Detail;
+export default Details;

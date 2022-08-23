@@ -1,7 +1,7 @@
 import React from 'react'
 import {Text, View, StyleSheet, SafeAreaView, FlatList, Image, StatusBar} from "react-native";
 import {CircleButton, DetailsBid, DetailsDesc, FocusedStatusBar, RectButton, SubInfo} from "../components";
-import {assets, FONTS, SHADOWS, SIZES} from "../constants";
+import {assets, COLORS, FONTS, SHADOWS, SIZES} from "../constants";
 
 function DetailsHeader({data, navigation}) {
     return(
@@ -57,6 +57,11 @@ function Details({route, navigation}) {
                     <SubInfo />
                     <View style={{padding: SIZES.font}}>
                         <DetailsDesc data={data} />
+                        {data.bids.length > 0 && (
+                            <Text style={styles.bids}>
+                                Current Bids
+                            </Text>
+                        )}
                     </View>
                 </React.Fragment>}
             />
@@ -73,5 +78,10 @@ const styles = StyleSheet.create({
     },
     list: {
         paddingBottom: SIZES.extraLarge * 3
+    },
+    bids: {
+        fontSize: SIZES.font,
+        fontFamily: FONTS.semiBold,
+        color: COLORS.primary
     }
 })

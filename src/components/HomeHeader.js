@@ -1,7 +1,9 @@
 import {Image, StyleSheet, Text, TextInput, View} from "react-native";
 import {assets, COLORS, FONTS, SIZES} from "../constants";
+import _ from "lodash";
 
 function HomeHeader({handleSearch}) {
+    const debonunce = _.debounce(handleSearch, 200)
     return (
         <View style={styles.container}>
             <View style={styles.appBar}>
@@ -20,7 +22,7 @@ function HomeHeader({handleSearch}) {
                     <Image source={assets.search} resizeMode='contain' style={styles.searchIcon} />
                     <TextInput
                         placeholder='Search NFTs'
-                        onChangeText={handleSearch}
+                        onChangeText={debonunce}
                         style={styles.searchInput}
                     />
                 </View>

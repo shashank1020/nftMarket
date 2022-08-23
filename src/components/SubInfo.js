@@ -1,11 +1,11 @@
 import {Image, StyleSheet, Text, View} from "react-native";
 import {assets, COLORS, FONTS, SHADOWS, SIZES} from "../constants";
 
-export function NFTTitle({title='NTF title', subtitle='NTF subtitle'}) {
+export function NFTTitle({title='NTF title', subtitle='NTF subtitle', titleSize, subtitleSize}) {
     return (
         <View>
-            <Text style={styles.NFTTitle}>{title}</Text>
-            <Text style={styles.NFTSubtitle}>{subtitle}</Text>
+            <Text style={[styles.NFTTitle, {fontSize: titleSize}]}>{title}</Text>
+            <Text style={[styles.NFTSubtitle, {fontSize: subtitleSize}]}>{subtitle}</Text>
         </View>
     )
 }
@@ -94,12 +94,10 @@ const styles = StyleSheet.create({
     },
     NFTTitle: {
         fontFamily: FONTS.semiBold,
-        fontSize: SIZES.large,
         color: COLORS.primary
     },
     NFTSubtitle: {
         fontFamily: FONTS.regular,
-        fontSize: SIZES.small,
         color: COLORS.primary
     },
     ETHPrice: {

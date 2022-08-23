@@ -17,6 +17,8 @@ function NFTCard({data}) {
                 <NFTTitle
                     title={data.name}
                     subtitle={data.creator}
+                    titleSize={SIZES.large}
+                    subtitleSize={SIZES.small}
                 />
                 <View style={styles.bottomContainer}>
                     <ETHPrice price={data.price}/>
